@@ -1,12 +1,5 @@
-from django.shortcuts import render, HttpResponse
-
-items = [
-    {"id": 1, "name": "Кроссовки abibas", "quantity": 5},
-    {"id": 2, "name": "Куртка кожаная", "quantity": 2},
-    {"id": 3, "name": "Coca-cola 1 литр", "quantity": 12},
-    {"id": 4, "name": "Картофель фри", "quantity": 0},
-    {"id": 5, "name": "Кепка", "quantity": 124},
-]
+from django.shortcuts import render, HttpResponse, Http404
+from MainApp.models import Item
 
 
 # Create your views here.
@@ -15,16 +8,18 @@ def main(request):
 
 
 def item(request, id):
-    context = {}
-    for item in items:
-        if item["id"] == id:
-            context["item"] = item
-            return render(request, 'item.html', context)
-
-    return HttpResponse(f"Товар с id={id} не найден")
+    try:
+        item = Item.objects.get(id=id)
+    except Item.DoesNotExist:
+        raise Http404
+    context = {
+        "item": item
+    }
+    return render(request, 'item.html', context)
 
 
 def items_list(request):
+    items = Item.objects.all()
     context = {
         "items": items
     }
