@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>item:{{item.name}}</title>
+    <style>
+        .card {
+            display: inline-block;
+            border: 1px solid blue;
+            padding: 10px;
+            margin: 8px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<header>
+    <a href="/">Домой</a>
+</header>
+<main>
+    <div class="card">
+        Товар {{item.name}} <br>
+        Количество: {{item.quantity}}
+    </div>
+</main>
+<a href="/items/">Назад</a>
+</body>
+</html>
