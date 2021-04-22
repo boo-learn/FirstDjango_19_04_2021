@@ -4,27 +4,70 @@
     <meta charset="UTF-8">
     <title>item:{{item.name}}</title>
     <style>
+         a:hover {
+            color: #5b80b2;
+        }
+        .current{
+            pointer-events: none;
+            cursor: default;
+            color: black;
+        }
+        .current:hover{
+            color: currentColor;
+            cursor: not-allowed;
+        }
+
+        a {
+            color: deepskyblue;
+            text-decoration: none;
+        }
+
+        header {
+            width: 100%;
+            background-color: #dedede;
+        }
+
+        header a {
+            display: inline-block;
+            padding: 5px;
+        }
+
+        main {
+            min-height: 200px;
+        }
+
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #848484;
+            color: white;
+            text-align: center;
+        }
         .card {
             display: inline-block;
             border: 1px solid blue;
             padding: 10px;
             margin: 8px;
         }
-
-
-
     </style>
 </head>
 <body>
 <header>
-    <a href="/">Домой</a>
+    <a href="/">Домой</a>/
+    <a href="/items/">Товары</a>/
+    <a class="current">{{item.name}}</a>
 </header>
 <main>
     <div class="card">
         Товар {{item.name}} {{item.brand}}<br>
-        Количество: {{item.count}}
+        Количество: {{item.count | default:'Товара нет на складе'}}
     </div>
 </main>
-<a href="/items/">Назад</a>
+<footer>
+    Изучение основ Django <br>
+    &copy; Юрченко Евгений Витальевич.
+</footer>
 </body>
 </html>

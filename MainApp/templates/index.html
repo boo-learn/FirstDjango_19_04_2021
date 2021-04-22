@@ -2,12 +2,62 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Home</title>
+    <style>
+        a:hover {
+            color: #5b80b2;
+        }
+        .current{
+            pointer-events: none;
+            cursor: default;
+            color: black;
+        }
+        .current:hover{
+            color: currentColor;
+            cursor: not-allowed;
+        }
+
+        a {
+            color: deepskyblue;
+            text-decoration: none;
+        }
+
+        header {
+            width: 100%;
+            background-color: #dedede;
+        }
+
+        header a {
+            display: inline-block;
+            padding: 5px;
+        }
+
+        main {
+            min-height: 200px;
+        }
+
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #848484;
+            color: white;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+<header>
+    <a class="current" href="/">Домой</a>/
+    <a href="/items/">Товары</a>
+</header>
 <main>
     Добро пожаловать в каталог товаров! <br>
-    <a href="/items/">Страница со списком товаров</a>
 </main>
+<footer>
+    Изучение основ Django <br>
+    &copy; Юрченко Евгений Витальевич.
+</footer>
 </body>
 </html>
