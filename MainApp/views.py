@@ -4,7 +4,7 @@ from MainApp.models import Item
 
 # Create your views here.
 def main(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', {"page_title": "Home"})
 
 
 def item(request, id):
@@ -13,7 +13,9 @@ def item(request, id):
     except Item.DoesNotExist:
         raise Http404
     context = {
-        "item": item
+        "item": item,
+        "page_title": f"Item:{item.name}",
+        "page": "Item"
     }
     return render(request, 'item.html', context)
 
@@ -21,6 +23,7 @@ def item(request, id):
 def items_list(request):
     items = Item.objects.all()
     context = {
-        "items": items
+        "items": items,
+        "page_title": "Items"
     }
     return render(request, 'items_list.html', context)
